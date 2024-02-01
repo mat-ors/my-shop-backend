@@ -9,7 +9,7 @@ const getProductsById: ValidatedEventAPIGatewayProxyEvent<
   const productId = event?.pathParameters?.id;
   const product = products.find((product) => product.id === productId);
 
-  if(!product) {
+  if (!product) {
     return {
       statusCode: 404,
       body: "Product not found",
@@ -17,9 +17,6 @@ const getProductsById: ValidatedEventAPIGatewayProxyEvent<
   }
 
   return {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-    },
     statusCode: 200,
     body: JSON.stringify(product),
   };
