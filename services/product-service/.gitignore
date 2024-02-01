@@ -3,6 +3,7 @@ node_modules
 jspm_packages
 coverage
 swagger
+.env
 
 # Serverless directories
 .serverless

@@ -1,7 +1,8 @@
 import type { AWS } from "@serverless/typescript";
 
-import getProductsList from "@functions/getProductsList";
 import getProductsById from "@functions/getProductsById";
+import getProductsList from "@functions/getProductsList";
+import createProduct from "@functions/createProduct";
 
 const serverlessConfiguration: AWS = {
   service: "product-service",
@@ -21,10 +22,34 @@ const serverlessConfiguration: AWS = {
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
       NODE_OPTIONS: "--enable-source-maps --stack-trace-limit=1000",
+      TABLE_PRODUCTS: "products",
+      TABLE_STOCKS: "stocks",
+    },
+    iam: {
+      role: {
+        statements: [
+          {
+            Effect: "Allow",
+            Action: [
+              "dynamodb:DescribeTable",
+              "dynamodb:Query",
+              "dynamodb:Scan",
+              "dynamodb:GetItem",
+              "dynamodb:PutItem",
+              // "dynamodb:UpdateItem",
+              // "dynamodb:DeleteItem",
+            ],
+            Resource: [
+              "arn:aws:dynamodb:us-east-1:*:table/products",
+              "arn:aws:dynamodb:us-east-1:*:table/stocks",
+            ],
+          },
+        ],
+      },
     },
   },
   // import the function via paths
-  functions: { getProductsList, getProductsById },
+  functions: { getProductsById, getProductsList, createProduct },
   package: { individually: true },
   custom: {
     esbuild: {
@@ -38,8 +63,8 @@ const serverlessConfiguration: AWS = {
       concurrency: 10,
     },
     autoswagger: {
-      // excludeStages: ['dev'],         // remove if you want to generate swagger docs
-      typefiles: ["./src/types/product.ts"],
+      //exludeStages: ['dev'],
+      typefiles: ["./src/types/types.ts"],
     },
   },
 };
