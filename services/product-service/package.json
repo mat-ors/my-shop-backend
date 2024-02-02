@@ -7,7 +7,7 @@
     "test": "jest",
     "deploy": "sls deploy",
     "offline": "sls offline start",
-    "local": "sls invoke local -f getProductsList --path src/functions/getProductsList/mock.json",
+    "local": "sls invoke local -f createProduct --path src/functions/createProduct/mock.json",
     "gen-doc": "sls generate-swagger",
     "init": "ts-node src/init-db-script"
   },
