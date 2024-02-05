@@ -13,6 +13,7 @@ export default {
             "application/json": schema,
           },
         },
+        bodyType: "CreateProductRequestBody",
         responses: {
           default: {},
           201: "Created",
