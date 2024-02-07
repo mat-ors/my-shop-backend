@@ -63,7 +63,7 @@ const serverlessConfiguration: AWS = {
       concurrency: 10,
     },
     autoswagger: {
-      exludeStages: ['dev'],
+      // exludeStages: ['dev'],
       typefiles: ["./src/types/types.ts"],
     },
   },
