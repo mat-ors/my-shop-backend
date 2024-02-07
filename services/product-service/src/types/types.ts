@@ -31,6 +31,10 @@ export interface ProductNotFound {
   message: "Product not found";
 }
 
+export interface InternalServerError {
+  message: "Internal Server Error";
+}
+
 export interface CreateProductRequestBody {
   title: string;
   description: string;

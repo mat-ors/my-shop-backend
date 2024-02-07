@@ -13,6 +13,10 @@ export default {
             description: "Request successful!",
             bodyType: "Products",
           },
+          500: {
+            description: "Internal Server Error",
+            bodyType: "InternalServerError",
+          },
         },
       },
     },
