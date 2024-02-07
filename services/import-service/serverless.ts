@@ -24,12 +24,12 @@ const serverlessConfiguration: AWS = {
         statements: [
           {
             Effect: "Allow",
-            Action: "s3:ListBucket",
+            Action: "s3:*",
             Resource: ["arn:aws:s3:::my-shop-import-service"],
           },
           {
             Effect: "Allow",
-            Action: "s3:ListBucket",
+            Action: "s3:*",
             Resource: ["arn:aws:s3:::my-shop-import-service/*"],
           },
         ],
