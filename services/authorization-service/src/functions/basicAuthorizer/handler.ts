@@ -25,7 +25,7 @@ const basicAuthorizer = async (
     ? generateResponse(principalId, Effect.Allow, methodArn)
     : generateResponse(principalId, Effect.Deny, methodArn);
 
-  return response as any;
+  return response;
 };
 
 function generateResponse(
