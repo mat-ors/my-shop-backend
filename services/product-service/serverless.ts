@@ -13,6 +13,7 @@ const serverlessConfiguration: AWS = {
     "serverless-offline",
     "serverless-esbuild",
   ],
+  useDotenv: true,
   provider: {
     name: "aws",
     runtime: "nodejs14.x",
@@ -85,7 +86,7 @@ const serverlessConfiguration: AWS = {
         Type: "AWS::SNS::Subscription",
         Properties: {
           Protocol: "email",
-          Endpoint: "orsolya.matisz07@gmail.com",
+          Endpoint: "${env:EMAIL}",
           TopicArn: {
             Ref: "createProductTopic",
           },
